@@ -1,19 +1,10 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const router = require("./routes/userRoute");
-
-
-const app = express();
+const http = require("http");
+const app = require("./app");
+const dotenv = require('dotenv');
+dotenv.config();
 const port = process.env.PORT || 3000;
+const server = http.createServer(app);
 
-app.use(bodyParser.json());
-
-app.use("/api", router);
-
-app
-  .listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  })
-  .on("error", () => {
-    console.log("error to connect server");
-  });
+server.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
