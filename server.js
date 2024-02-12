@@ -1,8 +1,10 @@
 const http = require("http");
 const app = require("./app");
-const dotenv = require('dotenv');
-dotenv.config();
-const port = process.env.PORT || 3000;
+
+const env = process.env.NODE_ENV || "development";
+const config = require("./config")[env];
+
+const port = config.port || 3000;
 const server = http.createServer(app);
 
 server.listen(port, () => {
