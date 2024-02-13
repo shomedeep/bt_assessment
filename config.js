@@ -1,11 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
-let config = {
-  port: process.env["PORT"],
-};
-
 module.exports = {
-  development: config,
-  production: config,
+  port: process.env["PORT"],
+  NODE_ENV: process.env["NODE_ENV"],
 };
